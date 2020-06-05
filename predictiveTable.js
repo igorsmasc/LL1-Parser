@@ -37,8 +37,13 @@ module.exports = function getTable(rulesArray) {
         for(i = 1; i < finalSimbols.length; i++) {
             
             if(getFirst(rulesArray, element).includes(finalSimbols[i])){
-                myRule = rule.filter(element => (element[0].includes(finalSimbols[i]) || getFirst(rulesArray, element).includes(finalSimbols[i])))
-                aux.push(myRule)
+                if(rule.length < 3) {
+                    aux.push(rule)
+                } else {
+                    myRule = rule.filter(element => (element[0].includes(finalSimbols[i]) || getFirst(rulesArray, element).includes(finalSimbols[i])))
+                    aux.push(myRule)
+                }
+                
             } else {
                 aux.push('error')
             };
